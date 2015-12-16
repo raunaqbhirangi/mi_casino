@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Casino Portal</title>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="jquery"></script>
 	<script type="text/javascript" src = "java.js"></script>
     <!--link rel="stylesheet" type="text/css" href="style.css"-->
     <meta charset="UTF-8"> 
@@ -22,9 +22,35 @@
 				<option value="roulette">Derby</option>
 			</select>
 		</div>
+		<div id="check_button">
+			<button id="check" onclick="check_function()">Submit</button>
+		</div>
 	</div>
-	<div id="submit_button">
-		<button id="submit" onclick="submit_function()">Submit</button>
+	<div id='game_data'>
+		<div id='data_display'>
+		</div>
+		<div id = 'phoneno'>
+			Phone No.
+			<input type="text" id = "phoneno_input">
+		</div>
+		<div id = 'slot'>
+			Slot No.
+			<select id="slotno" onchange="table_fill()">
+			</select>
+		</div>
+		<div id="table">
+			Table No.
+			<select id = 'tableno'>
+			</select>
+		</div>
+		<div id="poker_exp">
+			Have you played Poker before?
+			<input type="radio" name="exp" value='1' checked>Yes
+			<input type="radio" name="exp" value='0' checked>No
+		</div>
+		<div id="submit_button">
+			<button id="submit" onclick="submit_function()">Submit</button>
+		</div>
 	</div>
 </body>
 </html>

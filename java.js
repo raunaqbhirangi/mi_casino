@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	$('#game_data').hide();
+	table_fill()
 })
 
 var check_function = function(){
@@ -29,6 +30,7 @@ var check_function = function(){
 	  	  	else if(data.status == false)
 	  	  	{
 	  	  		console.log(data.data[0]);		//existing entry
+	  	  		$('#already_played').html('MI No. : '+data.data[0].mi_no+'<br>Day : '+data.data[0].day_no+'<br>Slot : '+data.data[0].slot_no+'<br>Table : '+data.data[0].table_no);
 	  	  	}
 	  	  	else
 	  	  	{
@@ -59,11 +61,11 @@ var check_function = function(){
 			  	  				value: data.slot_no,
 			  	  				text: data.slot_no,
 			  	  			}));
+			  	  			table_fill();
 				  	  	}
 				  	  }
 				  	});
 	  	  		}
-	  	  		table_fill();
 	  	  		$('#data_display').html('MI NO. - '+mino+'<br>'+'Game - '+game);
 	  	  	}
 	  	  }
@@ -94,7 +96,8 @@ var table_fill = function(){
 	  	  },
 	  	  success : function(data){
 	  	  	//console.log(data);
-	  	  	$('#tableno').find('option').remove();
+	  	  	console.log(data);
+	  	  	$('#tableno').html('');
 	  	  	for (var i = 0; i < data.total; i++) {
 	  	  		var flag = 0;
 	  	  		for (var j = 0; j < data.tables.length; j++) {
@@ -141,6 +144,8 @@ var submit_function = function(){
   	  },
   	  success : function(data){
   	  	console.log(data);
+  	  	alert(data.msg);
+  	  	window.location.reload();
   	  }
   	});
 }
